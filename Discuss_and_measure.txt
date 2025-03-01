@@ -1,0 +1,187 @@
+Pentru grilele mici (de exemplu, 10*10), castigurile de performanta sunt relativ modeste, cu versiunea Paralela V4 avand chiar o incetinire la un numar mai mare de fire.
+Pentru grilele mari (de exemplu, 1000*1000), speed-upul devine mai semnificativ, valorile depasind 5.0 in unele cazuri, indicand ca programul beneficiaza considerabil de pe urma executiei paralele pe masura ce dimensiunea problemei creste.
+
+Performanta pe versiuni:
+
+Paralel V1 arata imbunatatiri constante, cu accelerari intre 1.7 si 4.5. Aceasta versiune pare sa fie performanta in mod consistent, probabil datorita echilibrarii eficiente a sarcinilor si a unei gestionari minime a sincronizarii.
+Paralel V2 obtine in general un speedup mai mare decat V1, ceea ce sugereaza ca optimizarile aditionale sunt eficiente. Totusi, performanta sa este apropiata de cea a lui V1, ceea ce arata ca optimizarile reduc in principal un cost fix de executie.
+Paralel V3 ofera un speedup similar cu V2, indicand ca abordarea sa are o eficienta comparabila, dar fara castiguri suplimentare notabile.
+Paralel V4 prezinta rezultate mixte. in cazul grilelor mici, acceleratia este redusa, probabil din cauza sincronizarii excesive sau a unei suprasarcini de calcul care afecteaza performanta. Totusi, pentru grile mari cu 8 fire, V4 atinge cel mai mare speed-up, ceea ce sugereaza ca optimizarile sale sunt eficiente atunci cand volumul de munca pe fir este substantial.
+
+Grilele mari prezinta cea mai buna eficienta a scalarii. Pe masura ce dimensiunea grilei creste, potentialul de speedup creste si el, atingand un varf in cazul Paralel V4, care obtine un speedup de pana la 5.32
+
+Measurements for 1000 generations
+
+Input grid: 10 x 10
+        2 threads:
+            Serial Simulation Time:      0.00207
+            Parallel V1 Simulation Time: 0.00184
+                        Speedup: 1.12500
+            Parallel V2 Simulation Time: 0.00138
+                        Speedup: 1.50000
+            Parallel V3 Simulation Time: 0.00160
+                        Speedup: 1.29375
+            Parallel V4 Simulation Time: 0.00452
+                        Speedup: 0.45796
+
+        4 threads:
+            Serial Simulation Time:      0.00203
+            Parallel V1 Simulation Time: 0.00156
+                        Speedup: 1.30197
+            Parallel V2 Simulation Time: 0.00115
+                        Speedup: 1.75972
+            Parallel V3 Simulation Time: 1.27778
+                        Speedup: 1.27778
+            Parallel V4 Simulation Time: 0.00859
+                        Speedup: 0.23621
+
+        8 threads:
+            Serial Simulation Time:      0.00208
+            Parallel V1 Simulation Time: 0.00184
+                        Speedup: 1.12851
+            Parallel V2 Simulation Time: 0.00135
+                        Speedup: 1.54009
+            Parallel V3 Simulation Time: 0.00204
+                        Speedup: 1.01926
+            Parallel V4 Simulation Time: 0.01550
+                        Speedup: 0.13410
+
+
+Input grid: 1000 x 1000
+        2 threads:
+            Serial Simulation Time:      20.37313
+            Parallel V1 Simulation Time: 11.91563
+                        Speedup: 1.70978
+            Parallel V2 Simulation Time: 11.35166
+                        Speedup: 1.79472
+            Parallel V3 Simulation Time: 11.60542
+                        Speedup: 1.75548
+            Parallel V4 Simulation Time: 11.74573
+                        Speedup: 1.73451
+
+        4 threads:
+            Serial Simulation Time:      20.20757
+            Parallel V1 Simulation Time:  8.14367
+                        Speedup: 2.48138
+            Parallel V2 Simulation Time:  8.10961
+                        Speedup: 2.49180
+            Parallel V3 Simulation Time:  7.79618
+                        Speedup: 2.59198
+            Parallel V4 Simulation Time:  6.66114
+                        Speedup: 3.03365
+
+        8 threads:
+            Serial Simulation Time:      20.29143
+            Parallel V1 Simulation Time:  5.06402
+                        Speedup: 4.00698
+            Parallel V2 Simulation Time:  5.18201
+                        Speedup: 3.91574
+            Parallel V3 Simulation Time:  5.21304
+                        Speedup: 3.89243
+            Parallel V4 Simulation Time:  4.13429
+                        Speedup: 4.90808
+
+
+Input grid: 2000 x 2000
+        2 threads:
+            Serial Simulation Time:      80.93393
+            Parallel V1 Simulation Time: 47.35829
+                        Speedup: 1.70897
+            Parallel V2 Simulation Time: 47.83623 
+                        Speedup: 1.69190
+            Parallel V3 Simulation Time: 48.88590
+                        Speedup: 1.65557
+            Parallel V4 Simulation Time: 48.96021
+                        Speedup: 1.65306
+
+        4 threads:
+            Serial Simulation Time:      80.49433
+            Parallel V1 Simulation Time: 32.93302
+                        Speedup: 2.44418
+            Parallel V2 Simulation Time: 30.86959
+                        Speedup: 2.60756
+            Parallel V3 Simulation Time: 31.83064
+                        Speedup: 2.52883
+            Parallel V4 Simulation Time: 28.10810
+                        Speedup: 2.86374
+
+        8 threads:
+            Serial Simulation Time:      82.47454
+            Parallel V1 Simulation Time: 19.07062
+                        Speedup: 4.32469
+            Parallel V2 Simulation Time: 19.87212
+                        Speedup: 4.15026
+            Parallel V3 Simulation Time: 19.83144
+                        Speedup: 4.15877
+            Parallel V4 Simulation Time: 15.61448
+                        Speedup: 5.28192
+
+
+Input grid: 3000 x 3000
+        2 threads:
+            Serial Simulation Time:      180.92837
+            Parallel V1 Simulation Time: 103.97843
+                        Speedup: 1.74006
+            Parallel V2 Simulation Time: 104.87442
+                        Speedup: 1.72519
+            Parallel V3 Simulation Time: 104.29490
+                        Speedup: 1.73478
+            Parallel V4 Simulation Time: 106.13430
+                        Speedup: 1.70471
+
+        4 threads:
+            Serial Simulation Time:      181.68328
+            Parallel V1 Simulation Time:  67.30618
+                        Speedup: 2.69936
+            Parallel V2 Simulation Time:  68.28375
+                        Speedup: 2.66071
+            Parallel V3 Simulation Time:  68.06259
+                        Speedup: 2.66936
+            Parallel V4 Simulation Time:  63.68467
+                        Speedup: 2.85286
+
+        8 threads:
+            Serial Simulation Time:      184.41194
+            Parallel V1 Simulation Time:  40.88002
+                        Speedup: 4.51105
+            Parallel V2 Simulation Time:  42.22727
+                        Speedup: 4.36712
+            Parallel V3 Simulation Time:  41.66081
+                        Speedup: 4.42650
+            Parallel V4 Simulation Time:  34.66172
+                        Speedup: 5.32033
+
+
+Input grid: 5000 x 5000
+        2 threads:
+            Serial Simulation Time:      515.32558
+            Parallel V1 Simulation Time: 303.94465
+                        Speedup: 1.69545
+            Parallel V2 Simulation Time: 298.37244
+                        Speedup: 1.72712
+            Parallel V3 Simulation Time: 282.00791
+                        Speedup: 1.82734
+            Parallel V4 Simulation Time: 285.96564
+                        Speedup: 1.80205
+
+        4 threads:
+            Serial Simulation Time:      512.68239
+            Parallel V1 Simulation Time: 177.66354
+                        Speedup: 2.88569
+            Parallel V2 Simulation Time: 181.04808
+                        Speedup: 2.83175
+            Parallel V3 Simulation Time: 178.69977
+                        Speedup: 2.86896
+            Parallel V4 Simulation Time: 170.00902
+                        Speedup: 3.01562
+
+        8 threads:
+            Serial Simulation Time:      517.78120
+            Parallel V1 Simulation Time: 113.13670
+                        Speedup: 4.57660
+            Parallel V2 Simulation Time: 114.05528
+                        Speedup: 4.53974
+            Parallel V3 Simulation Time: 113.18468
+                        Speedup: 4.57466
+            Parallel V4 Simulation Time: 103.34555
+                        Speedup: 5.01019
